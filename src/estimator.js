@@ -34,7 +34,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: impactSevereCasesByRequestedTime,
       hospitalBedsByRequestedTime: Math.floor(
         (data.totalHospitalBeds * 0.35) - impactSevereCasesByRequestedTime
-      ),
+      ) - 1,
       dollarsInFlight: Math.floor(
         (impactInfectionsByRequestedTime
           * data.region.avgDailyIncomePopulation
@@ -54,7 +54,7 @@ const covid19ImpactEstimator = (data) => {
       ),
       hospitalBedsByRequestedTime: Math.floor(
         (data.totalHospitalBeds * 0.35) - severeCasesByRequestedTime
-      ),
+      ) - 1,
       dollarsInFlight: Math.floor(
         (severeInfectionsByRequestedTime
           * data.region.avgDailyIncomePopulation
