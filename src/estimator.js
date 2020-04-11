@@ -15,12 +15,12 @@ const covid19ImpactEstimator = (data) => {
   const impactCurrentInfected = data.reportCases * 10;
   const severeImpactCurrentInfected = data.reportCases * 50;
   const impactInfectionsByRequestedTime = Math.floor(
-    impactCurrentInfected *
-      2 ** Math.floor(convertToDays(data.timeToElapse, data.periodType) / 3)
+    impactCurrentInfected
+      * 2 ** Math.floor(convertToDays(data.timeToElapse, data.periodType) / 3)
   );
   const severeInfectionsByRequestedTime = Math.floor(
-    severeImpactCurrentInfected *
-      2 ** Math.floor(convertToDays(data.timeToElapse, data.periodType) / 3)
+    severeImpactCurrentInfected
+      * 2 ** Math.floor(convertToDays(data.timeToElapse, data.periodType) / 3)
   );
   //   const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
   const severeCasesByRequestedTime = Math.floor(
@@ -34,10 +34,10 @@ const covid19ImpactEstimator = (data) => {
       infectionsByRequestedTime: impactInfectionsByRequestedTime,
       //   severeCasesByRequestedTime: impactSevereCasesByRequestedTime,
       dollarsInFlight: Math.floor(
-        (impactInfectionsByRequestedTime *
-          data.avgDailyIncomePopulation *
-          data.avgDailyIncomeInUSD) /
-          Math.floor(convertToDays(data.timeToElapse, data.periodType))
+        (impactInfectionsByRequestedTime
+          * data.avgDailyIncomePopulation
+          * data.avgDailyIncomeInUSD)
+          / Math.floor(convertToDays(data.timeToElapse, data.periodType))
       )
     },
     severeImpact: {
@@ -54,10 +54,10 @@ const covid19ImpactEstimator = (data) => {
         data.totalHospitalBeds * 0.35 - severeCasesByRequestedTime
       ),
       dollarsInFlight: Math.floor(
-        (severeInfectionsByRequestedTime *
-          data.avgDailyIncomePopulation *
-          data.avgDailyIncomeInUSD) /
-          Math.floor(convertToDays(data.timeToElapse, data.periodType))
+        (severeInfectionsByRequestedTime
+          * data.avgDailyIncomePopulation
+          * data.avgDailyIncomeInUSD)
+          / Math.floor(convertToDays(data.timeToElapse, data.periodType))
       )
     }
   };
