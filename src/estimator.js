@@ -21,7 +21,7 @@ const covid19ImpactEstimator = (data) => {
     severeImpactCurrentInfected
     * (2 ** Math.floor(convertToDays(data.timeToElapse, data.periodType) / 3))
   );
-  //   const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
+  const impactSevereCasesByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.15);
   const severeCasesByRequestedTime = Math.floor(
     severeInfectionsByRequestedTime * 0.15
   );
@@ -31,11 +31,14 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       currentlyInfected: impactCurrentInfected,
       infectionsByRequestedTime: impactInfectionsByRequestedTime,
-      //   severeCasesByRequestedTime: impactSevereCasesByRequestedTime,
+      severeCasesByRequestedTime: impactSevereCasesByRequestedTime,
+      hospitalBedsByRequestedTime: Math.floor(
+        data.totalHospitalBeds * 0.35 - impactSevereCasesByRequestedTime
+      ),
       dollarsInFlight: Math.floor(
         (impactInfectionsByRequestedTime
-          * data.avgDailyIncomePopulation
-          * data.avgDailyIncomeInUSD)
+          * data.region.avgDailyIncomePopulation
+          * data.region.avgDailyIncomeInUSD)
           / Math.floor(convertToDays(data.timeToElapse, data.periodType))
       )
     },
