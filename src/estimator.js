@@ -39,7 +39,7 @@ const covid19ImpactEstimator = (data) => {
         (impactInfectionsByRequestedTime
           * data.region.avgDailyIncomePopulation
           * data.region.avgDailyIncomeInUSD)
-          / Math.trunc(convertToDays(data.timeToElapse, data.periodType))
+          / 30
       ),
       casesForICUByRequestedTime: Math.trunc(
         impactInfectionsByRequestedTime * 0.15
@@ -65,7 +65,7 @@ const covid19ImpactEstimator = (data) => {
         (severeInfectionsByRequestedTime
           * data.region.avgDailyIncomePopulation
           * data.region.avgDailyIncomeInUSD)
-          / Math.trunc(convertToDays(data.timeToElapse, data.periodType))
+          / 30
       )
     }
   };
