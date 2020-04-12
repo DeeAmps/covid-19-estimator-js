@@ -28,6 +28,7 @@ const calculateImpact = (data) => {
 
   const impact = {};
 
+  
   impact.currentlyInfected = reportedCases * 10;
 
   const infectionRate = Math.trunc(
