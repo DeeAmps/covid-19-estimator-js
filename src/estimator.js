@@ -46,7 +46,7 @@ const covid19ImpactEstimator = (data) => {
       ),
       casesForVentilatorsByRequestedTime: Math.trunc(
         impactInfectionsByRequestedTime * 0.02
-      ),
+      )
     },
     severeImpact: {
       currentlyInfected: severeImpactCurrentInfected,
